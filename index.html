@@ -30,8 +30,10 @@
 		
 	</canvas>
 	<script>
-      var chess = document.getElementById('chess');
+   var chess = document.getElementById('chess');
       var context = chess.getContext('2d');
+  function inti(){
+     
       var me = true,over = false;
       var arrChess = [],wins = [],myWins = [],computerWin = [];
       //棋盘棋子的数组初始化
@@ -95,16 +97,20 @@
       drawChessBoard()
       function drawChessBoard(){
 	      context.strokeStyle = "#bfbfbf";
+        context.clearRect(0,0,chess.width,chess.height)
 	      for(var i = 0;i<10;i++){
+          context.beginPath();
 	      	context.moveTo(15+i*30,15);
 	      	context.lineTo(15+i*30,435);
 	      	context.stroke();
+         
 	      }
 	        for(var i = 0;i<15;i++){
 	      	context.moveTo(15,15+i*30);
 	      	context.lineTo(285,15+i*30);
 	      	context.stroke();
 	      }
+        
   		}
 
       function oneStep(i,j,me){
@@ -145,7 +151,9 @@
              		if(myWins[k] == 5){
              			var r = confirm('大神，请务必收下我的膝盖^_^');
                   if(r==true){
-                    window.location.reload();
+                    
+                    inti();
+                    //window.location.reload();
                   }else{}
              			over = true;
              		}
@@ -231,7 +239,9 @@
              		if(computerWin[k] == 5){
              			var r = confirm('嘻嘻，再来一局吧');
                   if(r==true){
-                    window.location.reload();
+                    // window.location.reload();
+                    //context.clearRect(0,0,chess.width,chess.height)
+                    inti();
                   }else{}
              			over = true;
              		}
@@ -241,6 +251,8 @@
              	me = !me;
              }
       }
+    }
+    inti();
 	</script>
 </body>
 </html>
